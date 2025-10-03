@@ -9,6 +9,7 @@ const MaxWidthWrapper = styled.div`
   margin-right: auto;
   padding-left: 16px;
   padding-right: 16px;
+  width: 100%;
 
   @media ${QUERIES.laptopAndUp} {
     padding-left: 32px;
