@@ -1,17 +1,37 @@
 import React from 'react';
 import styled from 'styled-components';
+import {QUERIES} from "../../constants.js";
 
 const SecondaryStory = ({ id, title, image, location, abstract }) => {
   return (
-    <a href={`/story/${id}`}>
+    <Link href={`/story/${id}`}>
       <Wrapper>
         <Image alt={image.alt} src={image.src} />
         <Heading>{title}</Heading>
         <Abstract>{abstract}</Abstract>
       </Wrapper>
-    </a>
+    </Link>
   );
 };
+
+const Link = styled.a`
+
+  &:not(:last-of-type) {
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--color-gray-300);
+
+  }
+  &:not(:first-of-type) {
+    padding-top: 16px;
+  }
+
+  @media ${QUERIES.tabletOnly} {
+    &:not(:last-of-type), &:not(:first-of-type) {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+  }
+`;
 
 const Wrapper = styled.article`
   display: grid;
@@ -45,6 +65,11 @@ const Abstract = styled.p`
   grid-area: abstract;
   font-size: 1rem;
   white-space: pre-wrap;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  margin-bottom: 1em;
 `;
 
 export default SecondaryStory;
